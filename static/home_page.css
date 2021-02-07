@@ -1,0 +1,30 @@
+.card {
+    width:18rem;
+}
+.btn-danger {
+    width:50px;
+}
+#cupcake-image {
+    height:300px;
+}
+.hidden {
+    display: none !important;
+}
+
+
+
+@media only screen and (max-width: 800px) {
+    .card {
+        width:10rem;
+    }
+    .card-body h3 {
+        font-size: 15px;
+    }
+    #cupcake-image {
+        height:75px;
+    }
+    .btn-danger {
+        width:40px;
+    }
+    
+}

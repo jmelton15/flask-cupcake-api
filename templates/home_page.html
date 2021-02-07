@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Cupcakes Home</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/static/bootstrap-5.0.0-beta1-dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/static/home_page.css">
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <div class="container">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category,message in messages %}
+                    <h4 class="{{category}}">{{message}}</h4>
+                {% endfor %}
+            {% endif %}
+            {% endwith %}
+            <h1 class="display-2 fw-bolder text-center" id="large-header">YAY CUPCAKES!!</h1> 
+            <div class="row">
+                <div class="col-6">
+                <div class="row" id="cupcake-list-container">
+
+                </div>
+                </div>
+                <div class="col-6" id="create-form-container">
+                    <div class="row">
+                        <form class="col d-flex justify-content-center flex-column" id="edit-cc-form">
+                            {{ edit_form.hidden_tag() }}  <!-- add type=hidden form fields -->
+                            <div class="mb-3">
+                            {% for field in edit_form if field.widget.input_type != 'hidden' %}
+                                {{field.label(class_="form-label fw-bolder")}}
+                                {{field(class="form-control")}}
+                                {% for error in field.errors %}
+                                <small class="text-danger">
+                                    {{error}}
+                                </small>
+                                {% endfor %}
+                            {% endfor %}
+                            </div>
+                            <button class="btn btn-success btn-sm" id="update-cc">Update Cupcake</button>
+                        </form> 
+                        <form class="col d-flex justify-content-center flex-column" id="add-cc-form" method="POST" enctype="multipart/form-data">
+                            {{ add_form.hidden_tag() }}  <!-- add type=hidden form fields -->
+                            <div class="mb-3">
+                            {% for field in add_form if field.widget.input_type != 'hidden' %}
+                                {{field.label(class_="form-label fw-bolder")}}
+                                {{field(class="form-control")}}
+                                {% for error in field.errors %}
+                                <small class="text-danger">
+                                    {{error}}
+                                </small>
+                                {% endfor %}
+                            {% endfor %}
+                            </div>
+                            <button class="btn btn-primary btn-sm" id="create-cc">Create A Cupcake</button>
+                        </form> 
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    <script src="https://unpkg.com/axios/dist/axios.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="/static/bootstrap-5.0.0-beta1-dist/js/bootstrap.min.js"></script>
+    <script src="/static/classes.js"></script>
+    <script src="/static/home_page.js"></script>
+    </body>
+</html>
