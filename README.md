@@ -82,7 +82,7 @@ Then follow these next three:
    ```
 3. Clone the Repo 
    ```sh
-   git clone git@github.com:jmelton15/PythonFlaskAXIOS-Boggle.git
+   git clone git@github.com:jmelton15/flask-cupcake-api.git
    ```
 4. Install pre-req for flask-sqlalchemy
    ```sh
